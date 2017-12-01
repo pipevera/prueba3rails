@@ -1,0 +1,54 @@
+
+
+<h1>Songs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Duration</th>
+      <th>Genre</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.name %></td>
+        <td><%= song.duration %></td>
+        <td><%= song.genre.name %></td>
+        <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add song', add_song_path(song), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h2>usuarios</h2>
+
+<table>
+<thead>
+    <tr>
+      <th>Name</th>
+      <th>option</th>
+      
+    </tr>
+  </thead>
+
+<tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= link_to "ver lista", user_songs_index_path(user), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<br>
+
+<%= link_to 'New Song', new_song_path %>
